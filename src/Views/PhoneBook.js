@@ -3,7 +3,7 @@ import ContactForm from '../components/ContactForm/ContactForm';
 import Filter from '../components/Filter/Filter';
 import ContactList from '../components/ContactList/ContactList';
 import { connect } from 'react-redux';
-import { operations, selectors } from '../redux';
+import { operations, selectors } from '../redux/Phone';
 
 class PhoneBook extends Component {
   componentDidMount() {

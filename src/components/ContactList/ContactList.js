@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import style from './ContactList.module.css';
 import { connect } from 'react-redux';
 // import actions from '../../redux/actions';
-import { operations, selectors } from '../../redux';
+import { operations, selectors } from '../../redux/Phone';
 
 const ContactList = ({ contacts, onDeleteContact }) => {
   console.log(contacts);

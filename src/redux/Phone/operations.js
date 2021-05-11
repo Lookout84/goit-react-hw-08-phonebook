@@ -1,14 +1,14 @@
 import axios from 'axios';
 import actions from './actions';
 
-axios.defaults.baseURL = `http://localhost:4000`;
+// axios.defaults.baseURL = `https://connections-api.herokuapp.com`;
 
 const fetchContacts = () => dispatch => {
   dispatch(actions.fetchContactsRequest());
   axios
     .get('/contacts')
     .then(({ data }) => dispatch(actions.fetchContactsSuccess(data)))
-    .catch(error => dispatch(actions.fetchContactsError(error)));
+    .catch(error => dispatch(actions.fetchContactsError(error.message)));
 };
 
 const addNewContact = ({ name, number }) => dispatch => {
@@ -20,7 +20,7 @@ const addNewContact = ({ name, number }) => dispatch => {
   axios
     .post('/contacts', contact)
     .then(({ data }) => dispatch(actions.addContactSuccess(data)))
-    .catch(error => dispatch(actions.addContactError(error)));
+    .catch(error => dispatch(actions.addContactError(error.message)));
 };
 
 const deleteContact = contactId => dispatch => {
@@ -28,7 +28,7 @@ const deleteContact = contactId => dispatch => {
   axios
     .delete(`/contacts/${contactId}`)
     .then(() => dispatch(actions.deleteContactSuccess(contactId)))
-    .catch(error => dispatch(actions.deleteContactError(error)));
+    .catch(error => dispatch(actions.deleteContactError(error.message)));
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
