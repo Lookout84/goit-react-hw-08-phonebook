@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { authSelectors } from '../redux/Auth';
 
 const PrivateRoute = ({
-  component: Component, 
-  isAuthenticated, 
+  component: Component,
+  isAuthenticated,
   redirectTo,
   ...routeProps
 }) => (

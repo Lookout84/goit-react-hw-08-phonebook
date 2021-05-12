@@ -15,7 +15,8 @@ const styles = {
   },
 };
 
-const AppBar = ({isAuthenticated}) => {
+const AppBar = ( {isAuthenticated} ) => {
+  console.log(isAuthenticated);
   return (
     <header style={styles.header}>
       <Navigation />
