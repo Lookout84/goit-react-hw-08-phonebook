@@ -17,17 +17,17 @@ const styles = {
   },
 };
 
-const UserMenu = ({ avatar, name, onLogout }) => (
+const UserMenu = ({ avatar, email, onLogout }) => (
   <div style={styles.container}>
     <img src={avatar} alt="" width="32" style={styles.avatar} />
-    <span style={styles.name}>Welcome, {name}</span>
+    <span style={styles.name}>Welcome, {email}</span>
     <button type="button" onClick={onLogout}>
       Logout
     </button>
   </div>
 );
 const mapStateToProps = state => ({
-  name: authSelectors.getUsername(state),
+  email: authSelectors.getUseremail(state),
   avatar: defaultAvatar,
 });
 
