@@ -1,29 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './ContactList.module.css';
+import { Table, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-// import actions from '../../redux/actions';
 import { operations, selectors } from '../../redux/Phone';
 
 const ContactList = ({ contacts, onDeleteContact }) => {
-  console.log(contacts);
   return (
-    <ul className={style.list}>
+    <Table striped bordered hover size="sm">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone number</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
       {contacts.map(({ id, name, number }) => (
-        <li className={style.item} key={id}>
-          {name}: {number}
-          <button
-            className={style.button}
-            type="button"
-            onClick={() => {
-              onDeleteContact(id);
-            }}
-          >
-            Delete
-          </button>
-        </li>
+        <tbody>
+          <tr>
+            <td>{name}</td>
+            <td>{number}</td>
+            <td>
+              <Button
+                variant="danger"
+                type="button"
+                onClick={() => {
+                  onDeleteContact(id);
+                }}
+              >
+                Delete
+              </Button>
+            </td>
+          </tr>
+        </tbody>
       ))}
-    </ul>
+    </Table>
+    // <ul className={style.list}>
+    //   {contacts.map(({ id, name, number }) => (
+    //     <li className={style.item} key={id}>
+    //       {name}: {number}
+    //       <button
+    //         className={style.button}
+    //         type="button"
+    //         onClick={() => {
+    //           onDeleteContact(id);
+    //         }}
+    //       >
+    //         Delete
+    //       </button>
+    //     </li>
+    //   ))}
+    // </ul>
   );
 };
 

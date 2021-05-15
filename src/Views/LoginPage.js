@@ -28,6 +28,7 @@ class LoginPage extends Component {
       <div>
         <Container fluid="md">
           <Row>
+            <Col></Col>
             <Col>
               <h1>Login page:</h1>
               <Form onSubmit={this.handleSubmit}>
@@ -60,6 +61,7 @@ class LoginPage extends Component {
                 </Button>
               </Form>
             </Col>
+            <Col></Col>
           </Row>
         </Container>
       </div>

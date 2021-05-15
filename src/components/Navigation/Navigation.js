@@ -1,38 +1,25 @@
 import React from 'react';
+import { Nav } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { authSelectors } from '../../redux/Auth';
 
-const styles = {
-  link: {
-    display: 'inline-block',
-    textDecoration: 'none',
-    padding: 12,
-    fontWeight: 700,
-    color: '#2A363B',
-  },
-  activeLink: {
-    color: '#E84A5F',
-  },
-};
-
 const Navigation = ({ isAuthenticated }) => (
-  <nav>
-    <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
-      Главная
-    </NavLink>
+  <Nav variant="pills" className="justify-content-start" activeKey="/home">
+    <Nav.Item>
+      <Nav.Link eventKey="1" as={NavLink} to="/" exact>
+        Home Page
+      </Nav.Link>
+    </Nav.Item>
 
     {isAuthenticated && (
-      <NavLink
-        to="/contacts"
-        exact
-        style={styles.link}
-        activeStyle={styles.activeLink}
-      >
-        Contacts
-      </NavLink>
+      <Nav.Item>
+        <Nav.Link eventKey="2" as={NavLink} to="/contacts" exact>
+          Contacts
+        </Nav.Link>
+      </Nav.Item>
     )}
-  </nav>
+  </Nav>
 );
 
 const mapStateToProps = state => ({

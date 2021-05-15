@@ -17,7 +17,7 @@ const styles = {
 const HomePage = () => (
   <div style={styles.container}>
     <h1 style={styles.title}>
-      Приветственная страница нашего сервиса{' '}
+      Phonebook{' '}
       <span role="img" aria-label="Иконка приветствия">
         💁‍♀️
       </span>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import style from './ContactForm.module.css';
+import { Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 // import actions from '../../redux/actions';
 import { operations, selectors } from '../../redux/Phone';
@@ -36,31 +36,37 @@ class ContactForm extends Component {
 
   render() {
     return (
-      <form className={style.ContactForm} onSubmit={this.handleSubmit}>
-        <label className={style.label}>
-          Name
-          <input
-            className={style.input}
+      <Form onSubmit={this.handleSubmit}>
+        <Form.Group controlId="formGroupName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
             type="text"
             name="name"
+            placeholder="Name"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Имя может состоять только из букв, апострофа, тире и пробелов."
+            required
             value={this.state.name}
             onChange={this.handleChange}
           />
-        </label>
-        <label className={style.label}>
-          Number
-          <input
-            className={style.input}
+        </Form.Group>
+        <Form.Group controlId="formGroupPhone">
+          <Form.Label>Phone number</Form.Label>
+          <Form.Control
             type="text"
+            placeholder="Phone"
             name="number"
+            pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
+            title="Номер телефона должен состоять из 11-12 цифр и также содержать пробелы, тире и начинаться с +"
+            required
             value={this.state.number}
             onChange={this.handleChange}
           />
-        </label>
-        <button className={style.button} type="submit">
+        </Form.Group>
+        <Button variant="success" type="submit">
           Add contact
-        </button>
-      </form>
+        </Button>
+      </Form>
     );
   }
 }

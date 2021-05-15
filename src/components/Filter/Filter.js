@@ -1,20 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './Filter.module.css';
+import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { actions, selectors } from '../../redux/Phone';
 
 const Filter = ({ value, onChange }) => {
   return (
-    <label>
-      Find contacts by name
-      <input
-        className={style.input}
-        type="text"
-        value={value}
-        onChange={onChange}
-      />
-    </label>
+    <Form.Group controlId="formGroupName">
+      <Form.Label>Find contacts by name</Form.Label>
+      <Form.Control type="text" value={value} onChange={onChange} />
+    </Form.Group>
   );
 };
 

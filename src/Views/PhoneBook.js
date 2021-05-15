@@ -4,6 +4,8 @@ import Filter from '../components/Filter/Filter';
 import ContactList from '../components/ContactList/ContactList';
 import { connect } from 'react-redux';
 import { operations, selectors } from '../redux/Phone';
+import { Container, Row, Col, Spinner } from 'react-bootstrap';
+// import Spinn from '../components/Spinner';
 
 class PhoneBook extends Component {
   componentDidMount() {
@@ -12,13 +14,23 @@ class PhoneBook extends Component {
 
   render() {
     return (
-      <>
-        <h1>Phonebook</h1>
-        <ContactForm />
-        <h2>Contacts</h2>
-        <Filter />
-        <ContactList />
-      </>
+      <Container fluid="md">
+        <Row className="mt-2">
+          <Col>
+            <ContactForm />
+          </Col>
+        </Row>
+        <Row className="mt-5">
+          <Col>
+            <h2>Contacts</h2>
+            <Filter />
+            {this.props.isLoadingContacts && (
+              <Spinner animation="border" size="sl" />
+            )}
+            <ContactList />
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

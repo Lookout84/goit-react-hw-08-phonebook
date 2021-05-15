@@ -11,6 +11,7 @@ import AppBar from './components/AppBar/AppBar';
 // import HomePage from './Views/HomePage';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+import { Spinner } from 'react-bootstrap';
 
 const HomePage = lazy(() =>
   import('./Views/HomePage' /* webpackChunkName: "home-page" */),
@@ -30,25 +31,14 @@ const LoginPage = lazy(() =>
 
 class App extends Component {
   componentDidMount() {
-    this.props.onGetCurretnUser();
+    this.props.onGetCurrentUser();
   }
-
-  //   render() {
-  //     return (
-  //       <div className="App">
-  //         <PhoneBook />
-  //       </div>
-  //     );
-  //   }
-  // }
-
-  // export default App;
 
   render() {
     return (
       <Container>
         <AppBar />
-        <Suspense fallback="">
+        <Suspense fallback={<Spinner animation="border" size="sl" />}>
           <Switch>
             <PublicRoute exact path="/" component={HomePage} />
             <PrivateRoute
@@ -76,7 +66,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = {
-  onGetCurretnUser: authOperations.getCurrentUser,
+  onGetCurrentUser: authOperations.getCurrentUser,
 };
 
 export default connect(null, mapDispatchToProps)(App);
