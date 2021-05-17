@@ -15,7 +15,7 @@ const ContactList = ({ contacts, onDeleteContact }) => {
         </tr>
       </thead>
       {contacts.map(({ id, name, number }) => (
-        <tbody>
+        <tbody key={id}>
           <tr>
             <td>{name}</td>
             <td>{number}</td>
